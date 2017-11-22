@@ -1,40 +1,36 @@
 #include "Matrix.h"
 
-Matrix::Matrix()
+Matrix::Matrix(const int size)
+	: size_(size)
 {
-
+	matrix_[0] = new float[size];
+	matrix_[1] = new float[size];
 }
 
 Matrix::~Matrix()
 {
+	delete matrix_[0];
+	delete matrix_[1];
 }
 
-void Matrix::addVector(const Vector vector)
+void Matrix::setPoint(const int index, const float x, const float y) const
 {
-	vertices.push_back(vector);
+	matrix_[0][index] = x;
+	matrix_[1][index] = y;
 }
 
-Matrix Matrix::scale(Matrix matrix)
+void Matrix::show(FWApplication* application) const
 {
-	std::vector<Vector> dotVertices = matrix.getVertices();
-	Matrix newMatrix;
-	for (int i = 0; i < vertices.size(); i++)
-		for (int j = 0; j < dotVertices.size(); j++)
-		{
-
-		}
+	for (int i = 0; i < size_; i++)
+		application->DrawLine(matrix_[0][i], matrix_[1][i], matrix_[0][(i + 1) % size_], matrix_[1][(i + 1) % size_]);
 }
 
-void Matrix::show(FWApplication * application)
+int Matrix::getsize() const
 {
-	for (int i = 0; i < vertices.size(); i++)
-	{
-		vertices[i].showPoint(application);
-		vertices[i].showLine(vertices[(i + 1) % vertices.size()], application);
-	}
+	return size_;
 }
 
-std::vector<Vector> Matrix::getVertices()
+float** Matrix::getMatrix()
 {
-	return vertices;
+	return matrix_;
 }

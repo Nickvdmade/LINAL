@@ -24,11 +24,11 @@ int main(int args[])
 	Vector vector2(100, 100);
 	Vector vector3(50, 100);
 	Vector vector4(50, 50);
-	Matrix matrix;
-	matrix.addVector(vector1);
-	matrix.addVector(vector2);
-	matrix.addVector(vector3);
-	matrix.addVector(vector4);
+	Matrix matrix(4);
+	matrix.setPoint(0, 100, 50);
+	matrix.setPoint(1, 100, 100);
+	matrix.setPoint(2, 50, 100);
+	matrix.setPoint(3, 50, 50);
 
 	//while (true){}
 	while (application->IsRunning())
@@ -54,6 +54,10 @@ int main(int args[])
 
 		application->SetColor(Color(0, 0, 0, 255));
 		matrix.show(application);
+		/*vector1.showLine(vector2, application);
+		vector2.showLine(vector3, application);
+		vector3.showLine(vector4, application);
+		vector4.showLine(vector1, application);*/
 
 		// For the background
 		application->SetColor(Color(255, 255, 255, 255));

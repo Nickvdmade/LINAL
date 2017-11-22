@@ -1,55 +1,52 @@
 #include "Vector.h"
 
-Vector::Vector(const float xDirection, const float yDirection)
+Vector::Vector(const float x, const float y)
 {
-	xDirection_ = xDirection;
-	yDirection_ = yDirection;
+	vector_[0] = x;
+	vector_[1] = y;
 }
 
 Vector::~Vector()
 {
 }
 
-Vector Vector::scale(const float scalair) const
+Vector Vector::scale(const float scalair)
 {
-	Vector vector(xDirection_ * scalair, yDirection_ * scalair);
+	Vector vector(vector_[0] * scalair, vector_[1] * scalair);
 	return vector;
 }
 
-Vector Vector::addVector(const Vector vector) const
+Vector Vector::operator+(Vector vector)
 {
-	Vector newVector(xDirection_ + vector.getX(), yDirection_ + vector.getY());
+	float* addVector = vector.getVector();
+	Vector newVector(vector_[0] + addVector[0], vector_[1] + addVector[1]);
 	return newVector;
 }
 
-Vector Vector::subtractVector(const Vector vector) const
+Vector Vector::operator-(Vector vector)
 {
-	Vector newVector(xDirection_ - vector.getX(), yDirection_ - vector.getY());
+	float* subtractVector = vector.getVector();
+	Vector newVector(vector_[0] - subtractVector[0], vector_[1] - subtractVector[1]);
 	return newVector;
 }
 
 void Vector::show(FWApplication* application)
 {
-	application->DrawLine(0, 0, xDirection_, yDirection_);
-	application->DrawRect(xDirection_, yDirection_, 5, 5, true);
+	application->DrawLine(0, 0, vector_[0], vector_[1]);
 }
 
-void Vector::showPoint(FWApplication * application)
+void Vector::showPoint(FWApplication* application)
 {
-	application->DrawRect(xDirection_, yDirection_, 5, 5, true);
+	application->DrawRect(vector_[0] - 2, vector_[1] - 2, 4, 4, true);
 }
 
-void Vector::showLine(Vector vector, FWApplication * application)
+void Vector::showLine(Vector vector, FWApplication* application)
 {
-	application->DrawLine(xDirection_, yDirection_, vector.getX(), vector.getY());
+	float* toVector = vector.getVector();
+	application->DrawLine(vector_[0], vector_[1], toVector[0], toVector[1]);
 }
 
-float Vector::getX() const
+float* Vector::getVector()
 {
-	return xDirection_;
-}
-
-float Vector::getY() const
-{
-	return yDirection_;
+	return vector_;
 }

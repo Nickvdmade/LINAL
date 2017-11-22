@@ -6,15 +6,16 @@
 class Matrix
 {
 public:
-	Matrix();
+	Matrix(const int size);
 	~Matrix();
-	void addVector(const Vector vector);
-	Matrix scale(Matrix matrix);
-	Matrix translate(const Matrix translateMatrix);
-	void show(FWApplication* application);
-	std::vector<Vector> getVertices();
+	void setPoint(const int index, const float x, const float y) const;
+	Matrix scale(Matrix scale);
+	void show(FWApplication* application) const;
+	int getsize() const;
+	float** getMatrix();
 
 private:
-	std::vector<Vector> vertices;
+	int size_;
+	float* matrix_[2];
 };
 
