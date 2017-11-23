@@ -8,14 +8,14 @@ class Matrix
 public:
 	Matrix(const int size);
 	~Matrix();
-	void setPoint(const int index, const float x, const float y) const;
+	void setItem(const int index, const Vector item);
 	Matrix scale(Matrix scale);
-	void show(FWApplication* application) const;
-	int getsize() const;
-	float** getMatrix();
+	void show(FWApplication* application);
+	int getSize() const;
+	std::vector<Vector> getMatrix() const;
 
 private:
 	int size_;
-	float* matrix_[2];
+	std::vector<Vector> matrix_;
 };
 

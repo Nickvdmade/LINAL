@@ -20,15 +20,23 @@ int main(int args[])
 	application->SetTargetFPS(60);
 	application->SetColor(Color(255, 10, 40, 255));
 	
-	Vector vector1(100, 50);
-	Vector vector2(100, 100);
-	Vector vector3(50, 100);
-	Vector vector4(50, 50);
+	Vector vector1(2);
+	vector1.setItem(0, 100);
+	vector1.setItem(1, 50);
+	Vector vector2(2);
+	vector2.setItem(0, 100);
+	vector2.setItem(1, 100);
+	Vector vector3(2);
+	vector3.setItem(0, 50);
+	vector3.setItem(1, 100);
+	Vector vector4(2);
+	vector4.setItem(0, 50);
+	vector4.setItem(1, 50);
 	Matrix matrix(4);
-	matrix.setPoint(0, 100, 50);
-	matrix.setPoint(1, 100, 100);
-	matrix.setPoint(2, 50, 100);
-	matrix.setPoint(3, 50, 50);
+	matrix.setItem(0, vector1);
+	matrix.setItem(1, vector2);
+	matrix.setItem(2, vector3);
+	matrix.setItem(3, vector4);
 
 	//while (true){}
 	while (application->IsRunning())
