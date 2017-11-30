@@ -32,11 +32,21 @@ int main(int args[])
 	Vector vector4(2);
 	vector4.setItem(0, 50);
 	vector4.setItem(1, 50);
-	Matrix matrix(4);
+	Vector vector5(2);
+	vector5.setItem(0, 75);
+	vector5.setItem(1, 25);
+	Matrix matrix(2, 5);
 	matrix.setItem(0, vector1);
 	matrix.setItem(1, vector2);
 	matrix.setItem(2, vector3);
 	matrix.setItem(3, vector4);
+	matrix.setItem(4, vector5);
+	Matrix matrix2(2, 2);
+	matrix2.setItem(0, 0, 2);
+	matrix2.setItem(0, 1, 0);
+	matrix2.setItem(1, 0, 0);
+	matrix2.setItem(1, 1, 2);
+	Matrix matrix3 = matrix.scale(matrix2);
 
 	//while (true){}
 	while (application->IsRunning())
@@ -62,6 +72,7 @@ int main(int args[])
 
 		application->SetColor(Color(0, 0, 0, 255));
 		matrix.show(application);
+		matrix3.show(application);
 		/*vector1.showLine(vector2, application);
 		vector2.showLine(vector3, application);
 		vector3.showLine(vector4, application);

@@ -6,16 +6,19 @@
 class Matrix
 {
 public:
-	Matrix(const int size);
+	Matrix(const int colSize, const int rowSize);
 	~Matrix();
-	void setItem(const int index, const Vector item);
+	void setItem(const int colIndex, const int rowIndex, const float item);
+	void setItem(const int colIndex, const Vector vector);
 	Matrix scale(Matrix scale);
 	void show(FWApplication* application);
-	int getSize() const;
-	std::vector<Vector> getMatrix() const;
+	int getColSize() const;
+	int getRowSize() const;
+	float** getMatrix() const;
 
 private:
-	int size_;
-	std::vector<Vector> matrix_;
+	int colSize_;
+	int rowSize_;
+	float** matrix_;
 };
 

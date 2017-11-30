@@ -1,3 +1,4 @@
-﻿  Main.cpp
-c:\users\gebruiker\source\repos\linal\kmint_framework\framework\sdlframework\sdlframework\main.cpp(59): warning C4065: switch statement contains 'default' but no 'case' labels
-  SDLFramework.vcxproj -> C:\Users\Gebruiker\Source\Repos\LINAL\KMINT_Framework\Framework\SDLFramework\Debug\SDLFramework.exe
+﻿  Matrix.cpp
+c:\users\nick\source\repos\linal\kmint_framework\framework\sdlframework\sdlframework\matrix.cpp(57): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  SDLFramework.vcxproj -> C:\Users\Nick\Source\Repos\LINAL\KMINT_Framework\Framework\SDLFramework\Debug\SDLFramework.exe
+  SDLFramework.vcxproj -> C:\Users\Nick\Source\Repos\LINAL\KMINT_Framework\Framework\SDLFramework\Debug\SDLFramework.pdb (Partial PDB)
