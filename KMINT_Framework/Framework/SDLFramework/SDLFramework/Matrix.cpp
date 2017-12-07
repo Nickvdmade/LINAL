@@ -34,21 +34,63 @@ Matrix Matrix::scale(Matrix scale)
 {
 	if (colSize_ == scale.getRowSize())
 	{
-		int scaleColSize = scale.getColSize();
-		int scaleRowSize = scale.getRowSize();
-		Matrix newMatrix(scaleColSize, rowSize_);
-		float** scaleMatrix = scale.getMatrix();
-		for (int col = 0; col < scaleColSize; col++)
+		return *this * scale;
+	}
+	return *this;
+}
+
+Matrix Matrix::translate(Vector translate)
+{
+	std::vector<float> translateVector = translate.getVector();
+	if (translateVector.size() == colSize_)
+	{
+		Matrix translateMatrix(colSize_ + 1, colSize_ + 1);
+		for (int col = 0; col < colSize_ + 1; col++)
+			for (int row = 0; row < colSize_ + 1; row++)
+			{
+				if (col == row)
+					translateMatrix.setItem(col, row, 1);
+				else if (row == colSize_)
+					translateMatrix.setItem(col, row, translateVector[col]);
+				else
+					translateMatrix.setItem(col, row, 0);
+			}
+
+		Matrix thisMatrix(colSize_ + 1, rowSize_);
+		for (int col = 0; col < colSize_ + 1; col++)
 			for (int row = 0; row < rowSize_; row++)
 			{
-				float newItem = 0;
-				for (int index = 0; index < colSize_; index++)
-					newItem += matrix_[index][row] * scaleMatrix[col][index];
-				newMatrix.setItem(col, row, newItem);
+				if (col == colSize_)
+					thisMatrix.setItem(col, row, 1);
+				else
+					thisMatrix.setItem(col, row, matrix_[col][row]);
 			}
+
+		Matrix tempMatrix = thisMatrix*translateMatrix;
+		Matrix newMatrix(colSize_, rowSize_);
+		for (int col = 0; col < colSize_; col++)
+			for (int row = 0; row < rowSize_; row++)
+				newMatrix.setItem(col, row, tempMatrix.getMatrix()[col][row]);
 		return newMatrix;
 	}
 	return *this;
+}
+
+Matrix Matrix::operator*(Matrix matrix)
+{
+	int matrixColSize = matrix.getColSize();
+	int matrixRowSize = matrix.getRowSize();
+	Matrix newMatrix(matrixColSize, rowSize_);
+	float** multiplyMatrix = matrix.getMatrix();
+	for (int col = 0; col < matrixColSize; col++)
+		for (int row = 0; row < rowSize_; row++)
+		{
+			float newItem = 0;
+			for (int index = 0; index < colSize_; index++)
+				newItem += matrix_[index][row] * multiplyMatrix[col][index];
+			newMatrix.setItem(col, row, newItem);
+		}
+	return newMatrix;
 }
 
 void Matrix::show(FWApplication * application)

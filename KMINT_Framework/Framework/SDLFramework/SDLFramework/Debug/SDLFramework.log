@@ -1,4 +1,4 @@
 ﻿  Matrix.cpp
-c:\users\nick\source\repos\linal\kmint_framework\framework\sdlframework\sdlframework\matrix.cpp(57): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\nick\source\repos\linal\kmint_framework\framework\sdlframework\sdlframework\matrix.cpp(98): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
   SDLFramework.vcxproj -> C:\Users\Nick\Source\Repos\LINAL\KMINT_Framework\Framework\SDLFramework\Debug\SDLFramework.exe
   SDLFramework.vcxproj -> C:\Users\Nick\Source\Repos\LINAL\KMINT_Framework\Framework\SDLFramework\Debug\SDLFramework.pdb (Partial PDB)

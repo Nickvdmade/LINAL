@@ -42,11 +42,12 @@ int main(int args[])
 	matrix.setItem(3, vector4);
 	matrix.setItem(4, vector5);
 	Matrix matrix2(2, 2);
-	matrix2.setItem(0, 0, 2);
+	matrix2.setItem(0, 0, 3);
 	matrix2.setItem(0, 1, 0);
 	matrix2.setItem(1, 0, 0);
-	matrix2.setItem(1, 1, 2);
+	matrix2.setItem(1, 1, 3);
 	Matrix matrix3 = matrix.scale(matrix2);
+	Matrix matrix4 = matrix.translate(vector4);
 
 	//while (true){}
 	while (application->IsRunning())
@@ -73,6 +74,7 @@ int main(int args[])
 		application->SetColor(Color(0, 0, 0, 255));
 		matrix.show(application);
 		matrix3.show(application);
+		matrix4.show(application);
 		/*vector1.showLine(vector2, application);
 		vector2.showLine(vector3, application);
 		vector3.showLine(vector4, application);
