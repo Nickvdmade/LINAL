@@ -6,6 +6,8 @@
 #include <time.h>
 #include "Vector.h"
 #include "Matrix.h"
+#include "MF.h"
+#include <complex>
 
 int main(int args[])
 {
@@ -20,7 +22,7 @@ int main(int args[])
 	application->SetTargetFPS(60);
 	application->SetColor(Color(255, 10, 40, 255));
 	
-	Vector vector1(2);
+	/*Vector vector1(2);
 	vector1.setItem(0, 100);
 	vector1.setItem(1, 50);
 	Vector vector2(2);
@@ -41,13 +43,62 @@ int main(int args[])
 	matrix.setItem(2, vector3);
 	matrix.setItem(3, vector4);
 	matrix.setItem(4, vector5);
-	Matrix matrix2(2, 2);
-	matrix2.setItem(0, 0, 3);
-	matrix2.setItem(0, 1, 0);
-	matrix2.setItem(1, 0, 0);
-	matrix2.setItem(1, 1, 3);
-	Matrix matrix3 = matrix.scale(matrix2);
-	Matrix matrix4 = matrix.translate(vector4);
+	Matrix mutatie = MF::translate2d(-50, -100) * MF::rotate2d(10) * MF::scale2d(2, 1) * MF::translate2d(50, 100);
+	Matrix matrix2 = matrix * mutatie;*/
+
+	Vector vector1(3);
+	vector1.setItem(0, 400);
+	vector1.setItem(1, 400);
+	vector1.setItem(2, 400);
+	Vector vector2(3);
+	vector2.setItem(0, 600);
+	vector2.setItem(1, 400);
+	vector2.setItem(2, 400);
+	Vector vector3(3);
+	vector3.setItem(0, 600);
+	vector3.setItem(1, 600);
+	vector3.setItem(2, 400);
+	Vector vector4(3);
+	vector4.setItem(0, 400);
+	vector4.setItem(1, 600);
+	vector4.setItem(2, 400);
+	Vector vector5(3);
+	vector5.setItem(0, 400);
+	vector5.setItem(1, 400);
+	vector5.setItem(2, 600);
+	Vector vector6(3);
+	vector6.setItem(0, 600);
+	vector6.setItem(1, 400);
+	vector6.setItem(2, 600);
+	Vector vector7(3);
+	vector7.setItem(0, 600);
+	vector7.setItem(1, 600);
+	vector7.setItem(2, 600);
+	Vector vector8(3);
+	vector8.setItem(0, 400);
+	vector8.setItem(1, 600);
+	vector8.setItem(2, 600);
+	Matrix matrix(3, 8);
+	matrix.setItem(0, vector1);
+	matrix.setItem(1, vector2);
+	matrix.setItem(2, vector3);
+	matrix.setItem(3, vector4);
+	matrix.setItem(4, vector5);
+	matrix.setItem(5, vector6);
+	matrix.setItem(6, vector7);
+	matrix.setItem(7, vector8);
+
+	Vector eye(4);
+	eye.setItem(0, 500);
+	eye.setItem(1, 500);
+	eye.setItem(2, 0);
+	eye.setItem(3, 1);
+
+	Vector lookAt(4);
+	lookAt.setItem(0, 500);
+	lookAt.setItem(0, 500);
+	lookAt.setItem(2, 1000);
+	lookAt.setItem(3, 1);
 
 	//while (true){}
 	while (application->IsRunning())
@@ -72,13 +123,9 @@ int main(int args[])
 		}
 
 		application->SetColor(Color(0, 0, 0, 255));
-		matrix.show(application);
-		matrix3.show(application);
-		matrix4.show(application);
-		/*vector1.showLine(vector2, application);
-		vector2.showLine(vector3, application);
-		vector3.showLine(vector4, application);
-		vector4.showLine(vector1, application);*/
+		matrix.show3d(application, eye, lookAt);
+		/*matrix.show2d(application);
+		matrix2.show2d(application);*/
 
 		// For the background
 		application->SetColor(Color(255, 255, 255, 255));

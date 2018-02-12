@@ -12,6 +12,9 @@ public:
 	Vector scale(const float scalair);
 	Vector operator+(Vector vector);
 	Vector operator-(Vector vector);
+	float dotProduct(Vector vector);
+	Vector crossProduct(Vector vector);
+	void normalize();
 	void show(FWApplication* application);
 	void showPoint(FWApplication* application);
 	void showLine(Vector vector, FWApplication* application);
