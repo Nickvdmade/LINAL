@@ -5,6 +5,7 @@
 class Matrix
 {
 public:
+	Matrix();
 	Matrix(const int rowSize, const int colSize);
 	~Matrix();
 	void setItem(const int rowIndex, const int colIndex, const float item);
@@ -15,6 +16,8 @@ public:
 	int getRowSize() const;
 	int getColSize() const;
 	float** getMatrix() const;
+
+	void print();
 
 private:
 	int rowSize_;

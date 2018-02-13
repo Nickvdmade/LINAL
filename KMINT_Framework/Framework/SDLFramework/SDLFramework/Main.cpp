@@ -8,6 +8,16 @@
 #include "Matrix.h"
 #include "MF.h"
 #include <complex>
+#include "SpaceShip.h"
+#include <chrono>
+#include "Target.h"
+
+std::chrono::system_clock::time_point bulletStepTime;
+std::chrono::system_clock::time_point targetStepTime;
+std::chrono::duration<double> bulletStepTimer;
+std::chrono::duration<double> targetStepTimer;
+double bulletStepDuration = 0.01;
+double targetStepDuration = 0.01;
 
 int main(int args[])
 {
@@ -21,84 +31,22 @@ int main(int args[])
 	
 	application->SetTargetFPS(60);
 	application->SetColor(Color(255, 10, 40, 255));
-	
-	/*Vector vector1(2);
-	vector1.setItem(0, 100);
-	vector1.setItem(1, 50);
-	Vector vector2(2);
-	vector2.setItem(0, 100);
-	vector2.setItem(1, 100);
-	Vector vector3(2);
-	vector3.setItem(0, 50);
-	vector3.setItem(1, 100);
-	Vector vector4(2);
-	vector4.setItem(0, 50);
-	vector4.setItem(1, 50);
-	Vector vector5(2);
-	vector5.setItem(0, 75);
-	vector5.setItem(1, 25);
-	Matrix matrix(2, 5);
-	matrix.setItem(0, vector1);
-	matrix.setItem(1, vector2);
-	matrix.setItem(2, vector3);
-	matrix.setItem(3, vector4);
-	matrix.setItem(4, vector5);
-	Matrix mutatie = MF::translate2d(-50, -100) * MF::rotate2d(10) * MF::scale2d(2, 1) * MF::translate2d(50, 100);
-	Matrix matrix2 = matrix * mutatie;*/
-
-	Vector vector1(3);
-	vector1.setItem(0, 400);
-	vector1.setItem(1, 400);
-	vector1.setItem(2, 400);
-	Vector vector2(3);
-	vector2.setItem(0, 600);
-	vector2.setItem(1, 400);
-	vector2.setItem(2, 400);
-	Vector vector3(3);
-	vector3.setItem(0, 600);
-	vector3.setItem(1, 600);
-	vector3.setItem(2, 400);
-	Vector vector4(3);
-	vector4.setItem(0, 400);
-	vector4.setItem(1, 600);
-	vector4.setItem(2, 400);
-	Vector vector5(3);
-	vector5.setItem(0, 400);
-	vector5.setItem(1, 400);
-	vector5.setItem(2, 600);
-	Vector vector6(3);
-	vector6.setItem(0, 600);
-	vector6.setItem(1, 400);
-	vector6.setItem(2, 600);
-	Vector vector7(3);
-	vector7.setItem(0, 600);
-	vector7.setItem(1, 600);
-	vector7.setItem(2, 600);
-	Vector vector8(3);
-	vector8.setItem(0, 400);
-	vector8.setItem(1, 600);
-	vector8.setItem(2, 600);
-	Matrix matrix(3, 8);
-	matrix.setItem(0, vector1);
-	matrix.setItem(1, vector2);
-	matrix.setItem(2, vector3);
-	matrix.setItem(3, vector4);
-	matrix.setItem(4, vector5);
-	matrix.setItem(5, vector6);
-	matrix.setItem(6, vector7);
-	matrix.setItem(7, vector8);
 
 	Vector eye(4);
-	eye.setItem(0, 500);
-	eye.setItem(1, 500);
-	eye.setItem(2, 0);
+	eye.setItem(0, -500);
+	eye.setItem(1, -200);
+	eye.setItem(2, -300);
 	eye.setItem(3, 1);
 
 	Vector lookAt(4);
-	lookAt.setItem(0, 500);
-	lookAt.setItem(0, 500);
-	lookAt.setItem(2, 1000);
+	lookAt.setItem(0, 100);
+	lookAt.setItem(1, 100);
+	lookAt.setItem(2, 200);
 	lookAt.setItem(3, 1);
+
+	SpaceShip spaceShip;
+	std::vector<Bullet> bullets;
+	Target target;
 
 	//while (true){}
 	while (application->IsRunning())
@@ -115,7 +63,33 @@ int main(int args[])
 				break;
 			case SDL_KEYDOWN:
 				switch (event.key.keysym.sym){
-
+				case SDLK_LSHIFT:
+					spaceShip.moveForward();
+					break;
+				case SDLK_a:
+					spaceShip.turnHorizontal(true);
+					break;
+				case SDLK_d:
+					spaceShip.turnHorizontal(false);
+					break;
+				case SDLK_w:
+					spaceShip.turnVertical(true);
+					break;
+				case SDLK_s:
+					spaceShip.turnVertical(false);
+					break;
+				case SDLK_q:
+					spaceShip.roll(true);
+					break;
+				case SDLK_e:
+					spaceShip.roll(false);
+					break;
+				case SDLK_SPACE:
+					bullets.push_back(spaceShip.shoot());
+					break;
+				case SDLK_h:
+					spaceShip.sightToggle();
+					break;
 				default:
 					break;
 				}
@@ -123,12 +97,37 @@ int main(int args[])
 		}
 
 		application->SetColor(Color(0, 0, 0, 255));
-		matrix.show3d(application, eye, lookAt);
+		try
+		{
+			spaceShip.show(application, eye, lookAt);
+			target.show(application, eye, lookAt);
+			targetStepTimer = std::chrono::system_clock::now() - targetStepTime;
+			if (targetStepTimer.count() > targetStepDuration)
+			{
+				target.update();
+				targetStepTime = std::chrono::system_clock::now();
+			}
+			bulletStepTimer = std::chrono::system_clock::now() - bulletStepTime;
+			for (auto i = bullets.begin(); i < bullets.end(); ++i)
+			{
+				auto& item = *i;
+				if (bulletStepTimer.count() > bulletStepDuration)
+				{
+					item.update();
+					bulletStepTime = std::chrono::system_clock::now();
+				}
+				item.show(application, eye, lookAt);
+			}
+		}
+		catch(std::exception& ex)
+		{
+			std::cerr << ex.what() << std::endl;
+		}
 		/*matrix.show2d(application);
 		matrix2.show2d(application);*/
 
 		// For the background
-		application->SetColor(Color(255, 255, 255, 255));
+		application->SetColor(Color(0, 0, 0, 255));
 
 		application->UpdateGameObjects();
 		application->RenderGameObjects();

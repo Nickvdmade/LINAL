@@ -81,6 +81,7 @@ Vector Vector::crossProduct(Vector vector)
 	if (size != productVector.size())
 		throw "CROSS PRODUCT: Vector sizes are not equal";
 	Vector result(size);
+	size = 3;
 	for (int i = 0; i < size; i++)
 	{
 		result.setItem(i, vector_[(i + 1) % size] * productVector[(i + 2) % size] - vector_[(i + 2) % size] * productVector[(i + 1) % size]);
@@ -90,7 +91,7 @@ Vector Vector::crossProduct(Vector vector)
 
 void Vector::normalize()
 {
-	float length = dotProduct(*this);
+	float length = sqrt(dotProduct(*this));
 	for (int i = 0; i < size_; i++)
 		vector_[i] = vector_[i] / length;
 

@@ -5,12 +5,12 @@
 class MF
 {
 public:
-	static Matrix scale2d(int x, int y);
-	static Matrix translate2d(int x, int y);
-	static Matrix rotate2d(int degree);
-	static Matrix scale3d(int x, int y, int z);
-	static Matrix translate3d(int x, int y, int z);
-	static Matrix rotate3d(int degree, Vector point, Vector axis);
+	static Matrix scale2d(float x, float y);
+	static Matrix translate2d(float x, float y);
+	static Matrix rotate2d(float degree);
+	static Matrix scale3d(float x, float y, float z);
+	static Matrix translate3d(float x, float y, float z);
+	static Matrix rotate3d(float degree, Vector point, Vector axis);
 
 private:
 	static Matrix rotateX(float degree);

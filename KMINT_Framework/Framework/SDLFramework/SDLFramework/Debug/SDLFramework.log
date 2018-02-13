@@ -1,8 +1,2 @@
-﻿  Matrix.cpp
-c:\users\gebruiker\source\repos\linal\kmint_framework\framework\sdlframework\sdlframework\matrix.cpp(67): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\gebruiker\source\repos\linal\kmint_framework\framework\sdlframework\sdlframework\matrix.cpp(101): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\gebruiker\source\repos\linal\kmint_framework\framework\sdlframework\sdlframework\matrix.cpp(178): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-c:\users\gebruiker\source\repos\linal\kmint_framework\framework\sdlframework\sdlframework\matrix.cpp(179): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-c:\users\gebruiker\source\repos\linal\kmint_framework\framework\sdlframework\sdlframework\matrix.cpp(199): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
-c:\users\gebruiker\source\repos\linal\kmint_framework\framework\sdlframework\sdlframework\matrix.cpp(200): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
+﻿  Bullet.cpp
   SDLFramework.vcxproj -> C:\Users\Gebruiker\Source\Repos\LINAL\KMINT_Framework\Framework\SDLFramework\Debug\SDLFramework.exe

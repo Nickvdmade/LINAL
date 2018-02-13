@@ -3,6 +3,10 @@
 #include <iostream>
 #include <SDL_stdinc.h>
 
+Matrix::Matrix()
+{
+}
+
 Matrix::Matrix(const int rowSize, const int colSize)
 	: rowSize_(rowSize)
 	, colSize_(colSize)
@@ -97,7 +101,7 @@ void Matrix::show3d(FWApplication* application, Vector eye, Vector lookAt)
 	matrix = showVectors.getMatrix();
 	for (int i = 0; i < colSize; i++)
 	{
-		if (matrix[3][i] >= 0 && matrix[3][(i + 1) % colSize] >= 0)
+		if (matrix[3][i] > 0 && matrix[3][(i + 1) % colSize] > 0)
 			application->DrawLine(matrix[0][i], matrix[1][i], matrix[0][(i + 1) % colSize], matrix[1][(i + 1) % colSize]);
 	}
 }
@@ -117,24 +121,29 @@ float** Matrix::getMatrix() const
 	return matrix_;
 }
 
+void Matrix::print()
+{
+	for (int i = 0; i < rowSize_; i++)
+	{
+		for (int j = 0; j < colSize_; j++)
+			std::cout << matrix_[i][j] << " ";
+		std::cout << std::endl;
+	}
+	std::cout << std::endl;
+}
+
 Matrix Matrix::addExtra()
 {
 	Matrix matrix(rowSize_ + 1, colSize_);
 	for (int i = 0; i < rowSize_; i++)
 	{
 		for (int j = 0; j < colSize_; j++)
-		{
-			std::cout << matrix_[i][j] << " ";
 			matrix.setItem(i, j, matrix_[i][j]);
-		}
-		std::cout << std::endl;
 	}
 	for (int i = 0; i < colSize_; i++)
 	{
-		std::cout << 1 << " ";
 		matrix.setItem(rowSize_, i, 1);
 	}
-	std::cout << std::endl << std::endl;
 	return matrix;
 }
 
@@ -195,7 +204,7 @@ Vector Matrix::afterCalculation(Vector vector)
 	float y = calculationVector[1];
 	float w = calculationVector[3];
 	if (w == 0)
-		throw "AFTERCALCULATION: divide by 0";
+		return vector;// throw "AFTERCALCULATION: divide by 0";
 	afterCalculationVector.setItem(0, screenSize / 2 + (x + 1) / w*screenSize*0.5);
 	afterCalculationVector.setItem(1, screenSize / 2 + (y + 1) / w*screenSize*0.5);
 	afterCalculationVector.setItem(2, -calculationVector[2]);

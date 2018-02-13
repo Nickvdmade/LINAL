@@ -1,7 +1,7 @@
 #include "MF.h"
 #include <complex>
 
-Matrix MF::scale2d(int x, int y)
+Matrix MF::scale2d(float x, float y)
 {
 	Matrix matrix(3, 3);
 	matrix.setItem(0, 0, x);
@@ -10,7 +10,7 @@ Matrix MF::scale2d(int x, int y)
 	return matrix;
 }
 
-Matrix MF::translate2d(int x, int y)
+Matrix MF::translate2d(float x, float y)
 {
 	Matrix matrix(3, 3);
 	matrix.setItem(0, 0, 1);
@@ -21,7 +21,7 @@ Matrix MF::translate2d(int x, int y)
 	return matrix;
 }
 
-Matrix MF::rotate2d(int degree)
+Matrix MF::rotate2d(float degree)
 {
 	float radian = degree * M_PI / 180;
 	Matrix matrix(3, 3);
@@ -33,7 +33,7 @@ Matrix MF::rotate2d(int degree)
 	return matrix;
 }
 
-Matrix MF::scale3d(int x, int y, int z)
+Matrix MF::scale3d(float x, float y, float z)
 {
 	Matrix matrix(4, 4);
 	matrix.setItem(0, 0, x);
@@ -43,7 +43,7 @@ Matrix MF::scale3d(int x, int y, int z)
 	return matrix;
 }
 
-Matrix MF::translate3d(int x, int y, int z)
+Matrix MF::translate3d(float x, float y, float z)
 {
 	Matrix matrix(4, 4);
 	matrix.setItem(0, 0, 1);
@@ -56,15 +56,19 @@ Matrix MF::translate3d(int x, int y, int z)
 	return matrix;
 }
 
-Matrix MF::rotate3d(int degree, Vector point, Vector axis)
+Matrix MF::rotate3d(float degree, Vector point, Vector axis)
 {
 	std::vector<float> pointVector = point.getVector();
 	std::vector<float> axisVector = axis.getVector();
 	Matrix toOrigin = translate3d(-pointVector[0], -pointVector[1], -pointVector[2]);
+	float henk = atan2(axisVector[2], axisVector[0]);
 	Matrix toXy = rotateY(atan2(axisVector[2], axisVector[0]));
+	henk = atan2(axisVector[1], sqrt(pow(axisVector[0], 2) + pow(axisVector[2], 2)));
 	Matrix toX = rotateZ(atan2(axisVector[1], sqrt(pow(axisVector[0], 2) + pow(axisVector[2], 2))));
 	Matrix rotate = rotateX(degree);
+	henk = -atan2(axisVector[1], sqrt(pow(axisVector[0], 2) + pow(axisVector[2], 2)));
 	Matrix backXy = rotateZ(-atan2(axisVector[1], sqrt(pow(axisVector[0], 2) + pow(axisVector[2], 2))));
+	henk = -atan2(axisVector[2], axisVector[0]);
 	Matrix backXyz = rotateY(-atan2(axisVector[2], axisVector[0]));
 	Matrix toPoint = translate3d(pointVector[0], pointVector[1], pointVector[2]);
 	Matrix matrix = toOrigin * toXy * toX * rotate * backXy * backXyz * toPoint;
@@ -86,7 +90,7 @@ Matrix MF::rotateX(float degree)
 
 Matrix MF::rotateY(float degree)
 {
-	float radian = degree * M_PI / 180;
+	float radian = degree;// *M_PI / 180;
 	Matrix matrix(4, 4);
 	matrix.setItem(0, 0, std::cos(radian));
 	matrix.setItem(0, 2, -std::sin(radian));
@@ -99,7 +103,7 @@ Matrix MF::rotateY(float degree)
 
 Matrix MF::rotateZ(float degree)
 {
-	float radian = degree * M_PI / 180;
+	float radian = degree;// *M_PI / 180;
 	Matrix matrix(4, 4);
 	matrix.setItem(0, 0, std::cos(radian));
 	matrix.setItem(0, 1, -std::sin(radian));
