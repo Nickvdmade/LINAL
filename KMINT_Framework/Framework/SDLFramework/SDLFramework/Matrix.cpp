@@ -147,17 +147,6 @@ Matrix Matrix::addExtra()
 	return matrix;
 }
 
-Matrix Matrix::removeExtra()
-{
-	Matrix matrix(rowSize_ - 1, colSize_);
-	for (int i = 0; i < rowSize_ - 1; i++)
-	{
-		for (int j = 0; j < colSize_; j++)
-			matrix.setItem(i, j, matrix_[i][j]);
-	}
-	return matrix;
-}
-
 Matrix Matrix::createCameraMatrix(Vector x, Vector y, Vector z, Vector eye)
 {
 	Matrix matrix(4, 4);

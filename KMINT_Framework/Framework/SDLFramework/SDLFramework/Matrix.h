@@ -25,7 +25,6 @@ private:
 	float** matrix_;
 
 	Matrix addExtra();
-	Matrix removeExtra();
 	Matrix createCameraMatrix(Vector x, Vector y, Vector z, Vector eye);
 	Matrix createProjectionMatrix(float near, float far, float fieldOfView);
 	Vector afterCalculation(Vector vector);

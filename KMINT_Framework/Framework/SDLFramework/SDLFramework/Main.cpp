@@ -2,11 +2,8 @@
 #include "Config.h"
 #include "FWApplication.h"
 #include <SDL_events.h>
-#include "SDL_timer.h"
 #include <time.h>
 #include "Vector.h"
-#include "Matrix.h"
-#include "MF.h"
 #include <complex>
 #include "SpaceShip.h"
 #include <chrono>
