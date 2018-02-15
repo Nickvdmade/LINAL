@@ -8,6 +8,7 @@
 #include "SpaceShip.h"
 #include <chrono>
 #include "Target.h"
+#include "Camera.h"
 
 std::chrono::system_clock::time_point bulletStepTime;
 std::chrono::system_clock::time_point targetStepTime;
@@ -29,17 +30,7 @@ int main(int args[])
 	application->SetTargetFPS(60);
 	application->SetColor(Color(255, 10, 40, 255));
 
-	Vector eye(4);
-	eye.setItem(0, -500);
-	eye.setItem(1, -200);
-	eye.setItem(2, -300);
-	eye.setItem(3, 1);
-
-	Vector lookAt(4);
-	lookAt.setItem(0, 100);
-	lookAt.setItem(1, 100);
-	lookAt.setItem(2, 200);
-	lookAt.setItem(3, 1);
+	Camera camera;
 
 	SpaceShip spaceShip;
 	std::vector<Bullet> bullets;
@@ -87,6 +78,30 @@ int main(int args[])
 				case SDLK_h:
 					spaceShip.sightToggle();
 					break;
+				case SDLK_i:
+					camera.moveForward();
+					break;
+				case SDLK_k:
+					camera.moveBackward();
+					break;
+				case SDLK_j:
+					camera.moveLeft();
+					break;
+				case SDLK_l:
+					camera.moveRight();
+					break;
+				case SDLK_u:
+					camera.turnLeft();
+					break;
+				case SDLK_o:
+					camera.turnRight();
+					break;
+				case SDLK_PAGEUP:
+					camera.moveCloser();
+					break;
+				case SDLK_PAGEDOWN:
+					camera.moveFurther();
+					break;
 				default:
 					break;
 				}
@@ -96,6 +111,8 @@ int main(int args[])
 		application->SetColor(Color(0, 0, 0, 255));
 		try
 		{
+			Vector eye = camera.getEye();
+			Vector lookAt = camera.getLookAt();
 			spaceShip.show(application, eye, lookAt);
 			target.show(application, eye, lookAt);
 			targetStepTimer = std::chrono::system_clock::now() - targetStepTime;

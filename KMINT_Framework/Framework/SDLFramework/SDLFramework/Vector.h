@@ -15,6 +15,8 @@ public:
 	float dotProduct(Vector vector);
 	Vector crossProduct(Vector vector);
 	void normalize();
+	void normalize3d();
+	void absolute();
 	void show(FWApplication* application);
 	void showPoint(FWApplication* application);
 	void showLine(Vector vector, FWApplication* application);

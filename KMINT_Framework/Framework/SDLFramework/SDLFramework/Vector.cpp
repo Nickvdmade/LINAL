@@ -1,4 +1,5 @@
 #include "Vector.h"
+#include <complex>
 
 Vector::Vector()
 {
@@ -69,7 +70,7 @@ float Vector::dotProduct(Vector vector)
 	if (vector_.size() != productVector.size())
 		throw "DOT PRODUCT: Vector sizes are not equal";
 	float result = 0;
-	for (int i = 0; i < vector_.size(); i++)
+	for (int i = 0; i < 3; i++)
 		result += vector_[i] * productVector[i];
 	return result;
 }
@@ -95,6 +96,19 @@ void Vector::normalize()
 	for (int i = 0; i < size_; i++)
 		vector_[i] = vector_[i] / length;
 
+}
+
+void Vector::normalize3d()
+{
+	float length = sqrt(dotProduct(*this));
+	for (int i = 0; i < 3; i++)
+		vector_[i] = vector_[i] / length;
+}
+
+void Vector::absolute()
+{
+	for (int i = 0; i < 3; i++)
+		vector_[i] = std::abs(vector_[i]);
 }
 
 void Vector::show(FWApplication* application)
