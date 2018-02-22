@@ -1,15 +1,22 @@
-﻿  VectorTests.cpp
-c:\users\gebruiker\source\repos\linal\kmint_framework\framework\sdlframework\unittests\vectortests.cpp(17): warning C4244: 'argument': conversion from 'int' to 'const float', possible loss of data
-c:\users\gebruiker\source\repos\linal\kmint_framework\framework\sdlframework\unittests\vectortests.cpp(20): warning C4244: 'argument': conversion from 'float' to 'const unsigned int', possible loss of data
-c:\users\gebruiker\source\repos\linal\kmint_framework\framework\sdlframework\unittests\vectortests.cpp(27): warning C4244: 'argument': conversion from 'int' to 'const float', possible loss of data
-c:\users\gebruiker\source\repos\linal\kmint_framework\framework\sdlframework\unittests\vectortests.cpp(41): warning C4244: 'argument': conversion from 'int' to 'const float', possible loss of data
-c:\users\gebruiker\source\repos\linal\kmint_framework\framework\sdlframework\unittests\vectortests.cpp(42): warning C4244: 'argument': conversion from 'int' to 'const float', possible loss of data
-c:\users\gebruiker\source\repos\linal\kmint_framework\framework\sdlframework\unittests\vectortests.cpp(57): warning C4244: 'argument': conversion from 'int' to 'const float', possible loss of data
-c:\users\gebruiker\source\repos\linal\kmint_framework\framework\sdlframework\unittests\vectortests.cpp(58): warning C4244: 'argument': conversion from 'int' to 'const float', possible loss of data
-c:\users\gebruiker\source\repos\linal\kmint_framework\framework\sdlframework\unittests\vectortests.cpp(71): warning C4244: 'argument': conversion from 'int' to 'const float', possible loss of data
-  MatrixTests.cpp
-c:\users\gebruiker\source\repos\linal\kmint_framework\framework\sdlframework\unittests\matrixtests.cpp(70): warning C4244: 'argument': conversion from 'int' to 'const float', possible loss of data
-c:\users\gebruiker\source\repos\linal\kmint_framework\framework\sdlframework\unittests\matrixtests.cpp(88): warning C4244: 'argument': conversion from 'int' to 'const float', possible loss of data
+﻿  stdafx.cpp
+  VectorTest.cpp
+c:\users\nick\source\repos\linal\kmint_framework\framework\sdlframework\unittests\vectortest.cpp(74): warning C4018: '<': signed/unsigned mismatch
+  VectorTests.cpp
+c:\users\nick\source\repos\linal\kmint_framework\framework\sdlframework\unittests\vectortests.cpp(17): warning C4244: 'argument': conversion from 'int' to 'const float', possible loss of data
+c:\users\nick\source\repos\linal\kmint_framework\framework\sdlframework\unittests\vectortests.cpp(20): warning C4244: 'argument': conversion from 'float' to 'const unsigned int', possible loss of data
+c:\users\nick\source\repos\linal\kmint_framework\framework\sdlframework\unittests\vectortests.cpp(27): warning C4244: 'argument': conversion from 'int' to 'const float', possible loss of data
+c:\users\nick\source\repos\linal\kmint_framework\framework\sdlframework\unittests\vectortests.cpp(41): warning C4244: 'argument': conversion from 'int' to 'const float', possible loss of data
+c:\users\nick\source\repos\linal\kmint_framework\framework\sdlframework\unittests\vectortests.cpp(42): warning C4244: 'argument': conversion from 'int' to 'const float', possible loss of data
+c:\users\nick\source\repos\linal\kmint_framework\framework\sdlframework\unittests\vectortests.cpp(57): warning C4244: 'argument': conversion from 'int' to 'const float', possible loss of data
+c:\users\nick\source\repos\linal\kmint_framework\framework\sdlframework\unittests\vectortests.cpp(58): warning C4244: 'argument': conversion from 'int' to 'const float', possible loss of data
+c:\users\nick\source\repos\linal\kmint_framework\framework\sdlframework\unittests\vectortests.cpp(71): warning C4244: 'argument': conversion from 'int' to 'const float', possible loss of data
   MFTests.cpp
+  MFTest.cpp
+  MatrixTests.cpp
+c:\users\nick\source\repos\linal\kmint_framework\framework\sdlframework\unittests\matrixtests.cpp(70): warning C4244: 'argument': conversion from 'int' to 'const float', possible loss of data
+c:\users\nick\source\repos\linal\kmint_framework\framework\sdlframework\unittests\matrixtests.cpp(88): warning C4244: 'argument': conversion from 'int' to 'const float', possible loss of data
+  MatrixTest.cpp
   Generating Code...
-  UnitTests.vcxproj -> C:\Users\Gebruiker\Source\Repos\LINAL\KMINT_Framework\Framework\SDLFramework\Debug\UnitTests.dll
+     Creating library C:\Users\Nick\Source\Repos\LINAL\KMINT_Framework\Framework\SDLFramework\Debug\UnitTests.lib and object C:\Users\Nick\Source\Repos\LINAL\KMINT_Framework\Framework\SDLFramework\Debug\UnitTests.exp
+  UnitTests.vcxproj -> C:\Users\Nick\Source\Repos\LINAL\KMINT_Framework\Framework\SDLFramework\Debug\UnitTests.dll
+  UnitTests.vcxproj -> C:\Users\Nick\Source\Repos\LINAL\KMINT_Framework\Framework\SDLFramework\Debug\UnitTests.pdb (Partial PDB)

@@ -1,2 +1,5 @@
-﻿  Camera.cpp
-  SDLFramework.vcxproj -> C:\Users\Gebruiker\Source\Repos\LINAL\KMINT_Framework\Framework\SDLFramework\Debug\SDLFramework.exe
+﻿  MF.cpp
+c:\users\nick\source\repos\linal\kmint_framework\framework\sdlframework\sdlframework\mf.cpp(27): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\nick\source\repos\linal\kmint_framework\framework\sdlframework\sdlframework\mf.cpp(81): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+  SDLFramework.vcxproj -> C:\Users\Nick\Source\Repos\LINAL\KMINT_Framework\Framework\SDLFramework\Debug\SDLFramework.exe
+  SDLFramework.vcxproj -> C:\Users\Nick\Source\Repos\LINAL\KMINT_Framework\Framework\SDLFramework\Debug\SDLFramework.pdb (Partial PDB)

@@ -1,5 +1,6 @@
 #include "MF.h"
 #include <complex>
+#include <iostream>
 
 Matrix MF::scale2d(float x, float y)
 {
@@ -93,9 +94,9 @@ Matrix MF::rotateY(float degree)
 	float radian = degree;// *M_PI / 180;
 	Matrix matrix(4, 4);
 	matrix.setItem(0, 0, std::cos(radian));
-	matrix.setItem(0, 2, -std::sin(radian));
+	matrix.setItem(0, 2, std::sin(radian));
 	matrix.setItem(1, 1, 1);
-	matrix.setItem(2, 0, std::sin(radian));
+	matrix.setItem(2, 0, -std::sin(radian));
 	matrix.setItem(2, 2, std::cos(radian));
 	matrix.setItem(3, 3, 1);
 	return matrix;
@@ -106,8 +107,8 @@ Matrix MF::rotateZ(float degree)
 	float radian = degree;// *M_PI / 180;
 	Matrix matrix(4, 4);
 	matrix.setItem(0, 0, std::cos(radian));
-	matrix.setItem(0, 1, -std::sin(radian));
-	matrix.setItem(1, 0, std::sin(radian));
+	matrix.setItem(0, 1, std::sin(radian));
+	matrix.setItem(1, 0, -std::sin(radian));
 	matrix.setItem(1, 1, std::cos(radian));
 	matrix.setItem(2, 2, 1);
 	matrix.setItem(3, 3, 1);
