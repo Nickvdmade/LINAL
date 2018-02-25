@@ -38,7 +38,11 @@ Vector Vector::operator+(Vector vector)
 {
 	std::vector<float> addVector = vector.getVector();
 	if (vector_.size() != addVector.size())
-		throw "VECTOR ADDITION: Vector sizes are not equal";
+	{
+		std::stringstream error;
+		error << "VECTOR ADDITION: Vector sizes are not equal";
+		throw std::exception(error.str().c_str());
+	}
 	if (size_ == addVector.size())
 	{
 		Vector newVector(size_);
@@ -53,7 +57,11 @@ Vector Vector::operator-(Vector vector)
 {
 	std::vector<float> subtractVector = vector.getVector();
 	if (vector_.size() != subtractVector.size())
-		throw "VECTOR SUBTRACTION: Vector sizes are not equal";
+	{
+		std::stringstream error;
+		error << "VECTOR SUBTRACTION: Vector sizes are not equal";
+		throw std::exception(error.str().c_str());
+	}
 	if (size_ == subtractVector.size())
 	{
 		Vector newVector(size_);
@@ -68,7 +76,11 @@ float Vector::dotProduct(Vector vector)
 {
 	std::vector<float> productVector = vector.getVector();
 	if (vector_.size() != productVector.size())
-		throw "DOT PRODUCT: Vector sizes are not equal";
+	{
+		std::stringstream error;
+		error << "DOT PRODUCT: Vector sizes are not equal";
+		throw std::exception(error.str().c_str());
+	}
 	float result = 0;
 	for (int i = 0; i < 3; i++)
 		result += vector_[i] * productVector[i];
@@ -80,7 +92,11 @@ Vector Vector::crossProduct(Vector vector)
 	std::vector<float> productVector = vector.getVector();
 	int size = vector_.size(); 
 	if (size != productVector.size())
-		throw "CROSS PRODUCT: Vector sizes are not equal";
+	{
+		std::stringstream error;
+		error << "CROSS PRODUCT: Vector sizes are not equal";
+		throw std::exception(error.str().c_str());
+	}
 	Vector result(size);
 	size = 3;
 	for (int i = 0; i < size; i++)

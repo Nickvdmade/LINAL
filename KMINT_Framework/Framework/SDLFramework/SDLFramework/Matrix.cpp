@@ -2,6 +2,7 @@
 #include <ostream>
 #include <iostream>
 #include <SDL_stdinc.h>
+#include <sstream>
 
 Matrix::Matrix()
 {
@@ -172,7 +173,11 @@ Matrix Matrix::createCameraMatrix(Vector x, Vector y, Vector z, Vector eye)
 Matrix Matrix::createProjectionMatrix(float near, float far, float fieldOfView)
 {
 	if (far == near)
-		throw "PROJECTIONMATRIX: divide by 0";
+	{
+		std::stringstream error;
+		error << "PROJECTIONMATRIX: divide by 0";
+		throw std::exception(error.str().c_str());
+	}
 	float radian = fieldOfView * M_PI / 180;
 	float scale = near * tan(radian * 0.5);
 	Matrix matrix(4, 4);
@@ -193,7 +198,11 @@ Vector Matrix::afterCalculation(Vector vector)
 	float y = calculationVector[1];
 	float w = calculationVector[3];
 	if (w == 0)
-		return vector;// throw "AFTERCALCULATION: divide by 0";
+	{
+		std::stringstream error;
+		error << "AFTERCALCULATION: divide by 0";
+		throw std::exception(error.str().c_str());
+	}
 	afterCalculationVector.setItem(0, screenSize / 2 + (x + 1) / w*screenSize*0.5);
 	afterCalculationVector.setItem(1, screenSize / 2 + (y + 1) / w*screenSize*0.5);
 	afterCalculationVector.setItem(2, -calculationVector[2]);

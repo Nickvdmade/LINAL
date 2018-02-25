@@ -136,9 +136,8 @@ int main(int args[])
 		catch(std::exception& ex)
 		{
 			std::cerr << ex.what() << std::endl;
+			return EXIT_FAILURE;
 		}
-		/*matrix.show2d(application);
-		matrix2.show2d(application);*/
 
 		// For the background
 		application->SetColor(Color(0, 0, 0, 255));

@@ -1,5 +1,23 @@
-﻿  MF.cpp
-c:\users\nick\source\repos\linal\kmint_framework\framework\sdlframework\sdlframework\mf.cpp(27): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-c:\users\nick\source\repos\linal\kmint_framework\framework\sdlframework\sdlframework\mf.cpp(81): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-  SDLFramework.vcxproj -> C:\Users\Nick\Source\Repos\LINAL\KMINT_Framework\Framework\SDLFramework\Debug\SDLFramework.exe
-  SDLFramework.vcxproj -> C:\Users\Nick\Source\Repos\LINAL\KMINT_Framework\Framework\SDLFramework\Debug\SDLFramework.pdb (Partial PDB)
+﻿  Vector.cpp
+c:\users\gebruiker\source\repos\linal\kmint_framework\framework\sdlframework\sdlframework\vector.cpp(132): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\gebruiker\source\repos\linal\kmint_framework\framework\sdlframework\sdlframework\vector.cpp(137): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\gebruiker\source\repos\linal\kmint_framework\framework\sdlframework\sdlframework\vector.cpp(143): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  SpaceShip.cpp
+c:\users\gebruiker\source\repos\linal\kmint_framework\framework\sdlframework\sdlframework\spaceship.cpp(25): warning C4018: '<': signed/unsigned mismatch
+c:\users\gebruiker\source\repos\linal\kmint_framework\framework\sdlframework\sdlframework\spaceship.cpp(50): warning C4018: '<': signed/unsigned mismatch
+c:\users\gebruiker\source\repos\linal\kmint_framework\framework\sdlframework\sdlframework\spaceship.cpp(81): warning C4018: '<': signed/unsigned mismatch
+c:\users\gebruiker\source\repos\linal\kmint_framework\framework\sdlframework\sdlframework\spaceship.cpp(101): warning C4018: '<': signed/unsigned mismatch
+c:\users\gebruiker\source\repos\linal\kmint_framework\framework\sdlframework\sdlframework\spaceship.cpp(133): warning C4018: '<': signed/unsigned mismatch
+  Matrix.cpp
+c:\users\gebruiker\source\repos\linal\kmint_framework\framework\sdlframework\sdlframework\matrix.cpp(72): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\gebruiker\source\repos\linal\kmint_framework\framework\sdlframework\sdlframework\matrix.cpp(106): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\gebruiker\source\repos\linal\kmint_framework\framework\sdlframework\sdlframework\matrix.cpp(181): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\gebruiker\source\repos\linal\kmint_framework\framework\sdlframework\sdlframework\matrix.cpp(182): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\gebruiker\source\repos\linal\kmint_framework\framework\sdlframework\sdlframework\matrix.cpp(206): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
+c:\users\gebruiker\source\repos\linal\kmint_framework\framework\sdlframework\sdlframework\matrix.cpp(207): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
+  Main.cpp
+  MF.cpp
+c:\users\gebruiker\source\repos\linal\kmint_framework\framework\sdlframework\sdlframework\mf.cpp(30): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\gebruiker\source\repos\linal\kmint_framework\framework\sdlframework\sdlframework\mf.cpp(84): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+  Generating Code...
+  SDLFramework.vcxproj -> C:\Users\Gebruiker\Source\Repos\LINAL\KMINT_Framework\Framework\SDLFramework\Debug\SDLFramework.exe
